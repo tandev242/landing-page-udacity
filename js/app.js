@@ -11,29 +11,26 @@
  * 
  * JS Standard: ESlint
  * 
-*/
-
+ */
 /**
  * Comments should be present at the beginning of each procedure and class.
  * Great to have comments before crucial code sections within the procedure.
-*/
-
+ */
 /**
  * Define Global Variables
  * 
-*/
+ */
 const navbarList = document.getElementById('navbar__list')
 const sectionElements = document.querySelectorAll('section')
 let navElements = ''
+let navbar = navbarList.querySelectorAll('li')
 
 /**
  * End Global Variables
  * Start Helper Functions
  * 
-*/
-
+ */
 // build the nav
-
 function addNavbarElementsName() {
     sectionElements.forEach((element, index) => {
         navElements += `<li><a class='navbar__menu menu__link'> ${element.dataset.nav} </a></li>`
@@ -41,9 +38,6 @@ function addNavbarElementsName() {
     navbarList.innerHTML = navElements
 }
 addNavbarElementsName()
-
-
-let navbar = navbarList.querySelectorAll('li')
 
 // Add class 'active' to section when near top of viewport
 function addActiveMenuClass(element) {
@@ -75,30 +69,30 @@ function navigateNavbar() {
             const linkTag = item.querySelector('a')
             addActiveMenuClass(linkTag)
             // Scroll to section using ScrollIntoView based on https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
-            sectionElements[index].scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
+            sectionElements[index].scrollIntoView({
+                behavior: "smooth",
+                block: "end",
+                inline: "nearest"
+            })
             addActiveSectionClass(sectionElements[index])
         })
     })
 }
 navigateNavbar()
 
-
 // activate section when scrolling
 document.addEventListener('scroll', activateSectionWhenScrolling)
-
 // Add active section class when scrolling
 function activateSectionWhenScrolling() {
     // check the scrolling section and display at center screen, then adding into as active section class
     sectionElements.forEach((section, index) => {
         let elementOffset = section.getBoundingClientRect()
-
         // check the distance between top, bottom and section's position
-        if (elementOffset.top <= 200 && elementOffset.bottom >= 200) {
+        if (elementOffset.top <= 150 && elementOffset.bottom >= 150) {
             navbar.forEach((item) => {
                 const linkTag = item.querySelector('a')
                 removeActiveMenuClass(linkTag)
             })
-
             const linkTag = navbar[index].querySelector('a')
             addActiveSectionClass(section)
             addActiveMenuClass(linkTag)
@@ -111,7 +105,10 @@ function activateSectionWhenScrolling() {
 function scrollToTop() {
     const button = document.querySelector('#scrollToTop')
     button.addEventListener('click', () => {
-        window.scrollTo({top: 0, behavior: 'smooth'});
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     })
 }
 scrollToTop()

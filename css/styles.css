@@ -238,3 +238,9 @@ section.your-active-class .landing__container::after {
     cursor: pointer;
     border-radius: 30px;
 }
+
+@media only screen and (max-width: 768px){
+    .page__header {
+        display: block;
+    }
+}
