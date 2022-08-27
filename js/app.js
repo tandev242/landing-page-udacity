@@ -23,8 +23,6 @@
 const navbarList = document.getElementById('navbar__list')
 const sectionElements = document.querySelectorAll('section')
 let navElements = ''
-let navbar = navbarList.querySelectorAll('li')
-
 /**
  * End Global Variables
  * Start Helper Functions
@@ -56,6 +54,7 @@ function removeActiveSectionClass(element) {
     return element.classList.remove('your-active-class')
 }
 
+let navbar = navbarList.querySelectorAll('li')
 // Build menu and scroll to section on link click
 function navigateNavbar() {
     navbar.forEach((item, index) => {
@@ -71,7 +70,6 @@ function navigateNavbar() {
             // Scroll to section using ScrollIntoView based on https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
             sectionElements[index].scrollIntoView({
                 behavior: "smooth",
-                block: "end",
                 inline: "nearest"
             })
             addActiveSectionClass(sectionElements[index])

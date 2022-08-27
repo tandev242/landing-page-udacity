@@ -240,7 +240,8 @@ section.your-active-class .landing__container::after {
 }
 
 @media only screen and (max-width: 768px){
-    .page__header {
-        display: block;
+    #navbar__list {
+        display: flex;
+        justify-content: center;
     }
 }
